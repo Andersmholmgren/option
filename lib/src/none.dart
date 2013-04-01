@@ -95,20 +95,20 @@ class None<T> implements Option<T> {
   /**
    * Returns  `this`
    *
-   * @param {T(T n)}     - Ignored mapper
-   * @return {Option<T>} - `this`
+   * @param {dynamic(T n)}     - Ignored mapper
+   * @return {Option<dynamic>} - `this`
    */
-  Option<T> map(T mapper(T n)) {
+  Option<dynamic> map(dynamic mapper(T n)) {
     return this;
   }
 
   /**
    * Returns  `this`
    *
-   * @param {T(T n)}     - Ignored mapper
-   * @return {Option<T>} - `this`
+   * @param {dynamic(T n)}     - Ignored mapper
+   * @return {Option<dynamic>} - `this`
    */
-  Option<T> flatMap(Option<T> mapper(T n)) {
+  Option<dynamic> flatMap(Option<dynamic> mapper(T n)) {
     return this;
   }
 
@@ -120,6 +120,14 @@ class None<T> implements Option<T> {
    */
   Option<T> filter(bool predicate(T n)) {
     return this;
+  }
+
+  bool operator ==(Option<T> other) {
+    return other is None;
+  }
+
+  String toString() {
+    return "None";
   }
 
 }
