@@ -98,7 +98,7 @@ class Some<T> implements Option<T> {
    * @param {T(T n)}     - Mapper to apply to inner value if any.
    * @return {Option<T>} - The mapped result
    */
-  Option<T> map(T mapper(T n)) {
+  Option<dynamic> map(dynamic mapper(T n)) {
     return new Some(mapper(this._inner));
   }
 
@@ -106,10 +106,10 @@ class Some<T> implements Option<T> {
    * Applies the `flatMapper` to the inner value and returns the new
    * `Option` returned by the `flatMapper`
    *
-   * @param {Option<T>(T n)} flatMapper - Flat mapper to apply
-   * @return {Option<T>}                - The result of the flat map
+   * @param {Option<dynamic>(T n)} flatMapper - Flat mapper to apply
+   * @return {Option<dynamic>}                - The result of the flat map
    */
-  Option<T> flatMap(Option<T> flatMapper(T n)) {
+  Option<dynamic> flatMap(Option<dynamic> flatMapper(T n)) {
     return flatMapper(this._inner);
   }
 
@@ -127,6 +127,14 @@ class Some<T> implements Option<T> {
     } else {
       return new None<T>();
     }
+  }
+
+  bool operator ==(Option<T> other) {
+    return (other is Some<T>) && (other as Some<T>).get() == get();
+  }
+
+  String toString() {
+    return "Some($_inner)";
   }
 
 }
