@@ -78,19 +78,19 @@ abstract class Option<T> {
    * the mapper in a new `Option<T>` and returns the new `Option<T>`.
    * If the current `Option` is `None` this function just returns `this`
    *
-   * @param {T(T n)}     - Mapper to apply to inner value if any.
-   * @return {Option<T>} - The mapped result
+   * @param {dynamic(T n)}     - Mapper to apply to inner value if any.
+   * @return {Option<dynamic>} - The mapped result
    */
-  Option<T> map(T mapper(T n));
+  Option<dynamic> map(dynamic mapper(T n));
 
   /**
    * Applies the `flatMapper` to the inner value and returns the new
    * `Option` returned by the `flatMapper`
    *
-   * @param {Option<T>(T n)} flatMapper - Flat mapper to apply
-   * @return {Option<T>}                - The result of the flat map
+   * @param {Option<dynamic>(T n)} flatMapper - Flat mapper to apply
+   * @return {Option<dynamic>}                - The result of the flat map
    */
-  Option<T> flatMap(Option<T> flatMapper(T n));
+  Option<dynamic> flatMap(Option<dynamic> flatMapper(T n));
 
   /**
    * Applies predicate to the inner value when called on `Some` and
