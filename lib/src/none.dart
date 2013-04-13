@@ -10,7 +10,7 @@ class None<T> implements Option<T> {
   /**
    * Returns true
    *
-   * @return {bool} - True
+   * @return bool - True
    */
   bool isEmpty() {
     return true;
@@ -19,7 +19,7 @@ class None<T> implements Option<T> {
   /**
    * Returns false
    *
-   * @return {bool} - False
+   * @return bool - False
    */
   bool nonEmpty() {
     return false;
@@ -28,8 +28,8 @@ class None<T> implements Option<T> {
   /**
    * Always throws an exception
    *
-   * @return {T} - The inner value
-   * @throws     - Throws everytime
+   * @return T - The inner value
+   * @throws   - Throws every time
    */
   T get() {
     throw "get should never be called on an Option.None";
@@ -38,8 +38,8 @@ class None<T> implements Option<T> {
   /**
    * Returns the computed value of `alternative`.
    *
-   * @param {T|T()} alternative - The value or function of the alternative
-   * @return {T}                - The inner value or `alternative`
+   * @param T|T() alternative - The value or function of the alternative
+   * @return T                - The inner value or `alternative`
    */
   T getOrElse(dynamic alternative) {
     if (alternative is Function) {
@@ -52,8 +52,8 @@ class None<T> implements Option<T> {
   /**
    * Returns the computed value of `alternative`.
    *
-   * @param {Option<T>|Option<T>()} alternative - Value or function of alt
-   * @return {Option<T>}                        - Original or alternative
+   * @param Option<T>|Option<T>() alternative - Value or function of alt
+   * @return Option<T>                        - Original or alternative
    */
   Option<T> orElse(dynamic alternative) {
     if (alternative is Function) {
@@ -66,7 +66,7 @@ class None<T> implements Option<T> {
   /**
    * Returns `null` when called on `None`
    *
-   * @return {T|null} - Inner value on existence null otherwise
+   * @return T|null - Inner value on existence null otherwise
    */
   dynamic orNull() {
     return null;
@@ -75,18 +75,18 @@ class None<T> implements Option<T> {
   /**
    * Returns a `Right` type with the supplied `right`
    *
-   * @param {dynamic} right    - The right value
-   * @return {Either<dynamic>} - The right projection
+   * @param dynamic right    - The right value
+   * @return Either<dynamic> - The right projection
    */
   Either<dynamic, dynamic> toLeft(dynamic right) {
     return new Right(right);
   }
 
   /**
-   * Returns a `Left` type witht he supplied `left`
+   * Returns a `Left` type with he supplied `left`
    *
-   * @param {dynamic} left     - The left value
-   * @return {Either<dynamic>} - The left projection
+   * @param dynamic left     - The left value
+   * @return Either<dynamic> - The left projection
    */
   Either<dynamic, dynamic> toRight(dynamic left) {
     return new Left(left);
@@ -95,8 +95,8 @@ class None<T> implements Option<T> {
   /**
    * Returns  `this`
    *
-   * @param {dynamic(T n)}     - Ignored mapper
-   * @return {Option<dynamic>} - `this`
+   * @param dynamic(T n)     - Ignored mapper
+   * @return Option<dynamic> - `this`
    */
   Option<dynamic> map(dynamic mapper(T n)) {
     return this;
@@ -105,8 +105,8 @@ class None<T> implements Option<T> {
   /**
    * Returns  `this`
    *
-   * @param {dynamic(T n)}     - Ignored mapper
-   * @return {Option<dynamic>} - `this`
+   * @param dynamic(T n)     - Ignored mapper
+   * @return Option<dynamic> - `this`
    */
   Option<dynamic> flatMap(Option<dynamic> mapper(T n)) {
     return this;
@@ -115,8 +115,8 @@ class None<T> implements Option<T> {
   /**
    * Returns  `this`
    *
-   * @param {T(T n)}     - Ignored mapper
-   * @return {Option<T>} - `this`
+   * @param T(T n)     - Ignored mapper
+   * @return Option<T> - `this`
    */
   Option<T> filter(bool predicate(T n)) {
     return this;
