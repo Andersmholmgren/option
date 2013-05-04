@@ -38,11 +38,11 @@ noneTests() {
     });
 
     test("getOrElse() should return alternative", () {
-      expect(instance.getOrElse(3), equals(3));
+      expect(instance.getOrElse(false), equals(false));
     });
 
     test("getOrElse() should run and return alternative", () {
-      expect(instance.getOrElse(() => 3), equals(3));
+      expect(instance.getOrElse(() => false), equals(false));
     });
 
     test("orElse() should return alternative option", () {
