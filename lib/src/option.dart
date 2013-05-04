@@ -1,10 +1,10 @@
 part of option;
 
 abstract class Option<T> {
-  
+
   /**
    * Creates [Some] if the argument is not null, and [None] if it is null.
-   * 
+   *
    * @param T - The value to wrap.
    */
   factory Option(T inner) => (inner == null) ? const None() : new Some(inner);

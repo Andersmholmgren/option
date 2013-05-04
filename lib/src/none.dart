@@ -126,6 +126,11 @@ class None<T> implements Option<T> {
     return other is None;
   }
 
+  /**
+   * To string function
+   *
+   * @return String - The string representation of this class
+   */
   String toString() {
     return "None";
   }
