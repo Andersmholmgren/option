@@ -37,13 +37,6 @@ noneTests() {
       expect(instance.getOrElse(() => false), equals(false));
     });
 
-    test("orElse() should return alternative option", () {
-      var alternative = new Some<bool>(true);
-      var result      = instance.orElse(alternative);
-      expect(result is Some<bool>, isTrue);
-      expect(result.get(), equals(true));
-    });
-
     test("orElse() should run and return alternative option", () {
       var alternative = new Some<bool>(true);
       var result      = instance.orElse(() => alternative);
@@ -56,7 +49,7 @@ noneTests() {
     });
 
     test("toRight() should return Left", () {
-      var result = instance.toRight(3).fold(
+      var result = instance.toRight(3).cata(
         (e) => true,
         (s) => false
       );
@@ -64,7 +57,7 @@ noneTests() {
     });
 
     test("toLeft() should return Right", () {
-            var result = instance.toLeft(3).fold(
+      var result = instance.toLeft(3).cata(
         (e) => false,
         (s) => true
       );
@@ -115,23 +108,23 @@ someTests() {
     });
 
     test("orElse() should return this Some instance", () {
-      var result = instance.orElse(new None());
+      var result = instance.orElse(() => new None());
       expect(result is Some, isTrue);
       expect(result.get(), equals(3));
     });
 
     test("toLeft() should return Left of this inner value", () {
-      var result = instance.toLeft(6).fold(
-          (e) => true,
-          (s) => false
+      var result = instance.toLeft(6).cata(
+        (e) => true,
+        (s) => false
       );
       expect(result, isTrue, reason: "toLeft on Some returned a Right");
     });
 
     test("toRight() should return Right of this inner value", () {
-      var result = instance.toRight(6).fold(
-          (e) => false,
-          (s) => true
+      var result = instance.toRight(6).cata(
+        (e) => false,
+        (s) => true
       );
       expect(result, isTrue, reason: "toRight on Some returned a Left");
     });
