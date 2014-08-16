@@ -104,7 +104,7 @@ someTests() {
     });
 
     test("getOrElse() should return inner value", () {
-      expect(instance.getOrDefault(() => 6), equals(3));
+      expect(instance.getOrElse(() => 6), equals(3));
     });
 
     test("orElse() should return this Some instance", () {
