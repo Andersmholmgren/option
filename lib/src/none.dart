@@ -2,137 +2,32 @@ part of option;
 
 class None<T> implements Option<T> {
 
-  /**
-   * Constant constructor because this is an immutable container
-   */
   const None();
 
-  /**
-   * Returns true
-   *
-   * @return bool - True
-   */
-  bool isEmpty() {
-    return true;
-  }
+  T get() => throw "get should never be called on an Option.None";
 
-  /**
-   * Returns false
-   *
-   * @return bool - False
-   */
-  bool nonEmpty() {
-    return false;
-  }
+  T getOrElse(T alternative()) => alternative();
 
-  /**
-   * Always throws an exception
-   *
-   * @return T - The inner value
-   * @throws   - Throws every time
-   */
-  T get() {
-    throw "get should never be called on an Option.None";
-  }
+  T getOrDefault(T alternative) => alternative;
 
-  /**
-   * Returns the computed value of `alternative`.
-   *
-   * @param T|T() alternative - The value or function of the alternative
-   * @return T                - The inner value or `alternative`
-   */
-  T getOrElse(dynamic alternative) {
-    if (alternative is Function) {
-      return alternative();
-    } else {
-      return alternative;
-    }
-  }
+  Option<T> orElse(Option<T> alternative()) => alternative();
 
-  /**
-   * Returns the computed value of `alternative`.
-   *
-   * @param Option<T>|Option<T>() alternative - Value or function of alt
-   * @return Option<T>                        - Original or alternative
-   */
-  Option<T> orElse(dynamic alternative) {
-    if (alternative is Function) {
-      return alternative();
-    } else {
-      return alternative;
-    }
-  }
+  dynamic orNull() => null;
 
-  /**
-   * Returns `null` when called on `None`
-   *
-   * @return T|null - Inner value on existence null otherwise
-   */
-  dynamic orNull() {
-    return null;
-  }
+  dynamic cata(dynamic none(), dynamic some(T n)) => none();
 
-  /**
-   * Returns a `Right` type with the supplied `right`
-   *
-   * @param dynamic right    - The right value
-   * @return Either<dynamic> - The right projection
-   */
-  Either<dynamic, dynamic> toLeft(dynamic right) {
-    return new Right(right);
-  }
+  Either<dynamic, dynamic> toLeft(dynamic right) => new Right(right);
 
-  /**
-   * Returns a `Left` type with he supplied `left`
-   *
-   * @param dynamic left     - The left value
-   * @return Either<dynamic> - The left projection
-   */
-  Either<dynamic, dynamic> toRight(dynamic left) {
-    return new Left(left);
-  }
+  Either<dynamic, dynamic> toRight(dynamic left) => new Left(left);
 
-  /**
-   * Returns  `this`
-   *
-   * @param dynamic(T n)     - Ignored mapper
-   * @return Option<dynamic> - `this`
-   */
-  Option<dynamic> map(dynamic mapper(T n)) {
-    return this;
-  }
+  Option<dynamic> map(dynamic mapper(T n)) => this;
 
-  /**
-   * Returns  `this`
-   *
-   * @param dynamic(T n)     - Ignored mapper
-   * @return Option<dynamic> - `this`
-   */
-  Option<dynamic> flatMap(Option<dynamic> mapper(T n)) {
-    return this;
-  }
+  Option<dynamic> flatMap(Option<dynamic> mapper(T n)) => this;
 
-  /**
-   * Returns  `this`
-   *
-   * @param T(T n)     - Ignored mapper
-   * @return Option<T> - `this`
-   */
-  Option<T> filter(bool predicate(T n)) {
-    return this;
-  }
+  Option<T> filter(bool predicate(T n)) => this;
 
-  bool operator ==(Option<T> other) {
-    return other is None;
-  }
+  bool operator ==(Option<T> other) => other is None;
 
-  /**
-   * To string function
-   *
-   * @return String - The string representation of this class
-   */
-  String toString() {
-    return "None";
-  }
+  String toString() => "None";
 
 }
