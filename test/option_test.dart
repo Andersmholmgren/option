@@ -25,20 +25,12 @@ noneTests() {
   group("None Test:", () {
     var instance = new None<bool>();
 
-    test("isEmpty() should return true", () {
-      expect(instance.isEmpty(), isTrue);
-    });
-
-    test("nonEmpty() should return false", () {
-      expect(instance.nonEmpty(), isFalse);
-    });
-
     test("get() should throw", () {
       expect(() => instance.get(), throws);
     });
 
-    test("getOrElse() should return alternative", () {
-      expect(instance.getOrElse(false), equals(false));
+    test("getOrDefault() should return alternative", () {
+      expect(instance.getOrDefault(false), equals(false));
     });
 
     test("getOrElse() should run and return alternative", () {
@@ -108,22 +100,18 @@ noneTests() {
 
 someTests() {
   group("Some Test:", () {
-
     var instance = new Some<int>(3);
-    test("isEmpty() should return false", () {
-      expect(instance.isEmpty(), isFalse);
-    });
-
-    test("nonEmpty() should return true", () {
-      expect(instance.nonEmpty(), isTrue);
-    });
 
     test("get() should return inner value", () {
       expect(instance.get(), equals(3));
     });
 
+    test("getOrDefault() should return inner value", () {
+      expect(instance.getOrDefault(6), equals(3));
+    });
+
     test("getOrElse() should return inner value", () {
-      expect(instance.getOrElse(6), equals(3));
+      expect(instance.getOrDefault(() => 6), equals(3));
     });
 
     test("orElse() should return this Some instance", () {
