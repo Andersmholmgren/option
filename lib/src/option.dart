@@ -2,7 +2,10 @@ part of option;
 
 abstract class Option<T> {
 
-  factory Option(T inner) => (inner == null) ? const None() : new Some(inner);
+  factory Option(T inner) =>
+    inner == null
+      ? const None()
+      : new Some(inner);
 
   T get();
 
