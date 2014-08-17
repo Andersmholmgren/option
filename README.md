@@ -55,8 +55,8 @@ int compute(Option<Foo> optionalFoo) {
 
 ### Downcasting Back Down To Null Land
 
-Unfortunately, not every library you use is going to be expecting Option<T>
-values. So we give you a means of "downcasting" your Option<T> values to their
+Unfortunately, not every library you use is going to be expecting `Option<T>`
+values. So we give you a means of "downcasting" your `Option<T>` values to their
 flat type equivelent or null
 
 ```dart
@@ -68,10 +68,10 @@ int compute(Option<Foo> optionalFoo) {
 
 ### Sane Defaults On Null
 
-Some times you want to unwrap the value contained within an Option<T> and if
-that inner value doesn't exist (it's a None<T>) you want to set it to a sane
-default value instead, you can use either Option#getOrDefault(T) or
-Option#getOrElse(T alt()).
+Some times you want to unwrap the value contained within an `Option<T>` and if
+that inner value doesn't exist (it's a `None<T>`) you want to set it to a sane
+default value instead, you can use either `Option#getOrDefault(T)` or
+`Option#getOrElse(T alt())`.
 
 Heres how you would default to the value zero on null.
 ```dart
@@ -122,14 +122,14 @@ Option<String> validateEmail(String email) {
 
 ### Pattern Matching / Folding / Catamorphism
 
-Some times you'll have an Option<T> value and you want just want to do one
+Some times you'll have an `Option<T>` value and you want just want to do one
 computation if it's empty and another if it's non empty with the contained
 value and return the result of either case. In the null checking world this
 would be facilitated via an "is null" check. However, instead we do a rough
 approximation of what other languages call pattern matching by using a technique
 that functional programmers call "Folding" or "Catamorphism". We supply the
-Option<T> value with two functions, one which will run in either case and we
-pass them to the Option#cata() method.
+`Option<T>` value with two functions, one which will run in either case and we
+pass them to the `Option#cata()` method.
 
 ```dart
 bool nonEmptyValidator(Option<String> input)  {
