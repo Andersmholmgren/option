@@ -68,8 +68,8 @@ noneTests() {
       expect(instance.map((e) => e) is None, isTrue);
     });
 
-    test("flatMap() should return an instance of None", () {
-      expect(instance.flatMap((e) => new Some(e)) is None, isTrue);
+    test("expand() should return an instance of None", () {
+      expect(instance.expand((e) => new Some(e)) is None, isTrue);
     });
 
     test("filter() should return an instance of None", () {
@@ -135,8 +135,8 @@ someTests() {
       expect(result.get(), equals(6));
     });
 
-    test("flatMap() should apply flatMapper and return new Option", () {
-      var result = instance.flatMap((v) => new Some(v * 2));
+    test("expand() should apply expander and return new Option", () {
+      var result = instance.expand((v) => new Some(v * 2));
       expect(result is Some, isTrue);
       expect(result.get(), equals(6));
     });

@@ -1,6 +1,10 @@
 part of option;
 
-abstract class Option<T> {
+abstract class Option<T>
+implements Functor<Option>,
+           Applicative<Option>,
+           Monad<Option>
+{
 
   /**
    * The factory method for constructing Option values.
@@ -79,26 +83,6 @@ abstract class Option<T> {
    * left value.
    */
   Either<dynamic, dynamic> toRight(dynamic left);
-
-  /**
-   * Peforms a map operation on this Option<T>.
-   *
-   * If this is a Some<T> then the supplied mapper function will be called
-   * with the inner wrapped value and it's result will be wrapped in a Some
-   * value and returned. Otherwise if this is a None<T> then the None<T> will
-   * be returned immediately.
-   */
-  Option<dynamic> map(dynamic mapper(T n));
-
-  /**
-   * Performs a flatMap operation on this Option<T>.
-   *
-   * If this is a Some<T> then the supplied flatMapper function will be called
-   * with the inner wrapped value and the Option<T> it returns will be returned.
-   * Otherwise if this is a None<T> then the None<T> will be returned
-   * immediately.
-   */
-  Option<dynamic> flatMap(Option<dynamic> flatMapper(T n));
 
   /**
    * Performs a filter operation with the supplied predicate.

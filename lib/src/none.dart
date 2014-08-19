@@ -55,7 +55,12 @@ class None<T> implements Option<T> {
   /**
    * Always returns itself.
    */
-  Option<dynamic> flatMap(Option<dynamic> mapper(T n)) => this;
+  Option<dynamic> ap(Option<dynamic> other) => this;
+
+  /**
+   * Always returns itself.
+   */
+  Option<dynamic> expand(Option<dynamic> expand(T n)) => this;
 
   /**
    * Always returns itself.

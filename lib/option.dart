@@ -1,5 +1,6 @@
 library option;
 
+import 'package:concepts/concepts.dart';
 import 'package:either/either.dart';
 
 part 'src/option.dart';

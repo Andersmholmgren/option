@@ -56,11 +56,17 @@ class Some<T> implements Option<T> {
   Option<dynamic> map(dynamic mapper(T n)) => new Some(mapper(_inner));
 
   /**
+   * Returns the result of applying this wrapped function to the
+   * next applicative.
+   */
+  Option<dynamic> ap(Option<dynamic> other) => other.map(_inner);
+
+  /**
    * Returns the result of calling the supplied flatMapper with the
    * inner wrapped value.
    */
-  Option<dynamic> flatMap(Option<dynamic> flatMapper(T n)) =>
-    flatMapper(_inner);
+  Option<dynamic> expand(Option<dynamic> expander(T n)) =>
+    expander(_inner);
 
   /**
    * Applies the predicate to the inner wrapped value, if it's true it returns

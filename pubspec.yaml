@@ -1,5 +1,5 @@
 name: option
-version: 1.0.2
+version: 1.1.0
 homepage: https://github.com/JosephMoniz/dart-option
 description: >
   The Option typeclass inspired by Scala's implementation and Haskell's Maybe
@@ -8,5 +8,6 @@ description: >
 author: Joseph Moniz <joseph.moniz@gmail.com>
 dependencies:
   either: '>=0.1.0 <0.2.0'
+  concepts: '>=0.1.0 <=1.0.0'
 dev_dependencies:
   unittest: 0.4.7+1
