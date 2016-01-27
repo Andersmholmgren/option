@@ -53,7 +53,7 @@ class Some<T> implements Option<T> {
    * inner wrapped value.
    */
   Option<dynamic /*=R*/ > map /*<R>*/ (/*=R*/ mapper(T n)) =>
-      new Some(mapper(_inner));
+      new Some/*<R>*/(mapper(_inner));
 
   /**
    * Returns the result of applying this wrapped function to the
