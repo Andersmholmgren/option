@@ -50,7 +50,7 @@ class None<T> implements Option<T> {
   /**
    * Always returns itself.
    */
-  Option<dynamic> map(dynamic mapper(T n)) => this;
+  Option<dynamic /*=R*/ > map /*<R>*/ (/*=R*/ mapper(T n)) => const None<dynamic /*=R*/ >();
 
   /**
    * Always returns itself.
