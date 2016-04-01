@@ -1,6 +1,6 @@
 part of option;
 
-class None<T> implements Option<T> {
+class None<T> extends IterableBase<T> implements Option<T> {
 
   /**
    * The const constructor for the None<T> type.
@@ -77,4 +77,6 @@ class None<T> implements Option<T> {
    */
   String toString() => "None";
 
+  @override
+  Iterator<T> get iterator => new Iterable<T>.empty().iterator;
 }

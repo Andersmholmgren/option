@@ -3,7 +3,8 @@ part of option;
 abstract class Option<T>
 implements Functor<Option>,
            Applicative<Option>,
-           Monad<Option>
+           Monad<Option>,
+           Iterable<T>
 {
 
   /**

@@ -88,6 +88,10 @@ noneTests() {
       expect(instance.toString(), equals("None"));
     });
 
+    test('length should return 0', () {
+      expect(instance.length, equals(0));
+    });
+
   });
 }
 
@@ -166,6 +170,10 @@ someTests() {
 
     test("toString() should return Some(3)", () {
       expect(instance.toString(), "Some(3)");
+    });
+
+    test('length should return 1', () {
+      expect(instance.length, equals(1));
     });
 
   });
