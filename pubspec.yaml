@@ -8,6 +8,6 @@ dependencies:
   concepts: 
     path: "/Users/blah/dart/backlogio_acdart/gitbacklog_root/gissue_root/acdart_root/shelfish_root/thirdparty_core_root/dart-concepts"
 dev_dependencies: 
-  unittest: '>=0.4.7+1 <0.13.0'
+  test: 'any'
 environment:
   sdk: '>=1.8.0 <2.0.0'
