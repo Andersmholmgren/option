@@ -18,6 +18,11 @@ optionTests() {
       );
     });
 
+    test('Interoperates with iterables', () {
+      final optionals = <Option<int>>[new Some<int>(1), const None(), new Some<int>(2)]
+        .expand((i) => i);
+      expect(optionals, orderedEquals([1, 2]));
+    });
   });
 }
 
@@ -180,7 +185,6 @@ someTests() {
 }
 
 main() {
-
   optionTests();
   noneTests();
   someTests();
