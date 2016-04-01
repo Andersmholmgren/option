@@ -1,7 +1,8 @@
 part of option;
 
 abstract class Option<T>
-    implements Functor<Option<T>>, Applicative<Option>, Monad<Option> {
+    implements Functor<Option<T>>, Applicative<Option>, Monad<Option>,
+      Iterable<T> {
   /**
    * The factory method for constructing Option values.
    *

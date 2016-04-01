@@ -1,6 +1,7 @@
 part of option;
 
-class Some<T> implements Option<T> {
+class Some<T> extends IterableBase<T> implements Option<T> {
+
   final T _inner;
 
   /**
@@ -86,4 +87,7 @@ class Some<T> implements Option<T> {
    * Returns the string representation of this object
    */
   String toString() => "Some($_inner)";
+
+  @override
+  Iterator<T> get iterator => <T>[_inner].iterator;
 }
