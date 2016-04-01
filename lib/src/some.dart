@@ -1,7 +1,6 @@
 part of option;
 
 class Some<T> extends IterableBase<T> implements Option<T> {
-
   final T _inner;
 
   /**
@@ -53,7 +52,7 @@ class Some<T> extends IterableBase<T> implements Option<T> {
    * Returns a new Some containing the value of applying mapper to the
    * inner wrapped value.
    */
-  Option<dynamic /*=R*/ > map /*<R>*/ (/*=R*/ mapper(T n)) =>
+  Option<dynamic/*=R*/ > map/*<R>*/(/*=R*/ mapper(T n)) =>
       new Some/*<R>*/(mapper(_inner));
 
   /**
@@ -66,8 +65,7 @@ class Some<T> extends IterableBase<T> implements Option<T> {
    * Returns the result of calling the supplied flatMapper with the
    * inner wrapped value.
    */
-  Option<dynamic /*=R*/ > expand /*<R>*/ (
-          Option<dynamic /*=R*/ > expander(T n)) =>
+  Option<dynamic/*=R*/ > expand/*<R>*/(Option<dynamic/*=R*/ > expander(T n)) =>
       expander(_inner);
 
   /**

@@ -50,7 +50,8 @@ class None<T> extends IterableBase<T> implements Option<T> {
   /**
    * Always returns itself.
    */
-  Option<dynamic /*=R*/ > map /*<R>*/ (/*=R*/ mapper(T n)) => const None<dynamic /*=R*/ >();
+  Option<dynamic/*=R*/ > map/*<R>*/(/*=R*/ mapper(T n)) =>
+      const None<dynamic/*=R*/ >();
 
   /**
    * Always returns itself.
@@ -69,7 +70,7 @@ class None<T> extends IterableBase<T> implements Option<T> {
 
   /**
    * The equality operator.
-   */ 
+   */
   bool operator ==(Option<T> other) => other is None;
 
   /**
