@@ -59,7 +59,7 @@ class Some<T> extends IterableBase<T> implements Option<T> {
    * Returns the result of applying this wrapped function to the
    * next applicative.
    */
-  Option<dynamic> ap(Option<dynamic> other) => other.map(_inner);
+  Option<dynamic> ap(Option<dynamic> other) => other.map(_inner as Function);
 
   /**
    * Returns the result of calling the supplied flatMapper with the
