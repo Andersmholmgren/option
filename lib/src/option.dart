@@ -1,21 +1,15 @@
 part of option;
 
 abstract class Option<T>
-implements Functor<Option>,
-           Applicative<Option>,
-           Monad<Option>
-{
-
+    implements Functor<Option<T>>, Applicative<Option>, Monad<Option>,
+      Iterable<T> {
   /**
    * The factory method for constructing Option values.
    *
    * Given a possibly null value, returns the value wrappend in a Some<T> if the
    * value is non null, returns a None<T> otherwise.
    */
-  factory Option(T inner) =>
-    inner == null
-      ? const None()
-      : new Some(inner);
+  factory Option(T inner) => inner == null ? const None() : new Some(inner);
 
   /**
    * An exception unsafe getter of the inner value.
@@ -94,4 +88,8 @@ implements Functor<Option>,
    */
   Option<T> filter(bool predicate(T n));
 
+  Option<dynamic /*=R*/ > map /*<R>*/ (/*=R*/ mapper(T n));
+
+  Option<dynamic /*=R*/ > expand /*<R>*/ (
+      Option<dynamic /*=R*/ > expander(T n));
 }

@@ -1,6 +1,6 @@
 part of option;
 
-class None<T> implements Option<T> {
+class None<T> extends IterableBase<T> implements Option<T> {
 
   /**
    * The const constructor for the None<T> type.
@@ -50,7 +50,8 @@ class None<T> implements Option<T> {
   /**
    * Always returns itself.
    */
-  Option<dynamic> map(dynamic mapper(T n)) => this;
+  Option<dynamic/*=R*/ > map/*<R>*/(/*=R*/ mapper(T n)) =>
+      const None<dynamic/*=R*/ >();
 
   /**
    * Always returns itself.
@@ -69,7 +70,7 @@ class None<T> implements Option<T> {
 
   /**
    * The equality operator.
-   */ 
+   */
   bool operator ==(Option<T> other) => other is None;
 
   /**
@@ -77,4 +78,6 @@ class None<T> implements Option<T> {
    */
   String toString() => "None";
 
+  @override
+  Iterator<T> get iterator => new Iterable<T>.empty().iterator;
 }

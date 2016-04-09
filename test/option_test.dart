@@ -1,4 +1,4 @@
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import "package:option/option.dart";
 
 optionTests() {
@@ -18,6 +18,11 @@ optionTests() {
       );
     });
 
+    test('Interoperates with iterables', () {
+      final optionals = <Option<int>>[new Some<int>(1), const None(), new Some<int>(2)]
+        .expand((i) => i);
+      expect(optionals, orderedEquals([1, 2]));
+    });
   });
 }
 
@@ -86,6 +91,10 @@ noneTests() {
 
     test("toString() should return None", () {
       expect(instance.toString(), equals("None"));
+    });
+
+    test('length should return 0', () {
+      expect(instance.length, equals(0));
     });
 
   });
@@ -168,11 +177,14 @@ someTests() {
       expect(instance.toString(), "Some(3)");
     });
 
+    test('length should return 1', () {
+      expect(instance.length, equals(1));
+    });
+
   });
 }
 
 main() {
-
   optionTests();
   noneTests();
   someTests();
